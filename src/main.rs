@@ -8,8 +8,7 @@ use std::io::{self, Write};
 use serde::{Deserialize, Serialize};
 use std::fs::File;
 use std::fs;
-use rustyline::{Editor, error::ReadlineError};
-use rustyline::history::DefaultHistory;
+use rustyline::{Editor, error::ReadlineError, history::DefaultHistory};
 
 const WELCOME_MESSAGE: &str = "
 |===============================================|
@@ -74,9 +73,7 @@ impl Table {
 }
 
 impl AddAssign<Row> for Table {
-    fn add_assign(&mut self, value: Row) {
-        self.rows.push(value);
-    }
+    fn add_assign(&mut self, value: Row) { self.rows.push(value); }
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -109,9 +106,7 @@ impl Transaction {
         }
     }
 
-    pub fn execute(&mut self) {
-        self.status = TStatus::Executed;
-    }
+    pub fn execute(&mut self) { self.status = TStatus::Executed; }
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -260,13 +255,8 @@ impl Database {
                     }
                 }
 
-                Rule::debug => {
-                    println!("{:#?}", self);
-                }
-
-                Rule::view_transactions => {
-                    println!("{:#?}", self.transactions);
-                }
+                Rule::debug => { self.print() }
+                Rule::view_transactions => { println!("{:#?}", self.transactions); }
 
                 Rule::archive_myself => {
                     let mut tokens = inner.into_inner();
@@ -318,7 +308,7 @@ impl Database {
         };
 
         if let Err(_) = rl.load_history("history.txt") {
-            // Файл истории может отсутствовать – игнорируем
+            todo!();
         }
 
         loop {
