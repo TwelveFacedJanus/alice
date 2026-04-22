@@ -1,17 +1,32 @@
-[package]
-name = "Analyrical"
-version = "0.1.0"
-edition = "2024"
+[workspace]
+resolver = "3"
+members = [
+    "."
+, "alice"]
 
-[dependencies]
-chrono = { version = "0.4.44", features = ["serde"] }
-crossterm = "0.29.0"
-pest = "2.8.6"
-pest_derive = "2.8.6"
-ratatui = "0.30.0"
-rustyline = "18.0.0"
-serde = { version = "1.0.228", features = ["derive"] }
-serde_json = "1.0.149"
-textwrap = "0.16.2"
-tui-input = "0.15.3"
-uuid = { version = "1.23.1", features = ["serde", "v4"] }
+[workspace.package]
+authors = ["Ermolaev Daniil Denisovich <twofaced-janus@yandex.ru>"]
+edition = "2024"
+license-file = "LICENSE"
+publish = false
+version = "0.0.1-alpha"
+description = "Simple database"
+homepage = "https://github.com/TwoFacedJanus/alice"
+keywords = [
+    "database"
+]
+categories = ["database"]
+repository = "https://github.com/TwoFacedJanus/alice.git"
+
+[package]
+name = "alice"
+publish = false
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+description.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
+license-file.workspace = true
