@@ -1,0 +1,29 @@
+#V2
+exit
+CREATE DATABASE sys
+exit
+create database asd
+exit
+create database asd
+exit
+debug
+exit
+debug
+select database system_database
+select database sys
+debug
+exit
+debug
+select database sys
+debug
+exit
+debug
+exit
+debug
+select database sys
+debug
+exit
+debug
+select database sys
+debug
+exit

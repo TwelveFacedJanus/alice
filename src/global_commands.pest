@@ -28,7 +28,11 @@ commit       = { "COMMIT" | "commit" }
 create       = { "CREATE" | "create" }
 user         = { "USER" | "user" }
 pass         = { "PASSWORD" | "password" }
+database     = { "DATABASE" | "database" }
+select       = { "SELECT" | "select" }
 
+select_database = { select ~ database ~ word }
+create_database   = { create ~ database ~ word }
 create_user_cmd   = { create ~ user ~ word ~ pass ~ word }
 show_table        = { show ~ table ~ word }
 load_archive      = { load ~ archive ~ word }
@@ -36,4 +40,4 @@ archive_myself    = { archive ~ myself ~ to ~ word }
 view_transactions = { view ~ transactions }
 create_table      = { define ~ table ~ word }
 add_row           = { add ~ row ~ word ~ values ~ "(" ~ value_list? ~ ")" }
-command           = { create_user_cmd | commit | load_archive | archive_myself | create_table | add_row | debug | show_table | view_transactions | exit }
+command           = { select_database | create_database | create_user_cmd | commit | load_archive | archive_myself | create_table | add_row | debug | show_table | view_transactions | exit }
