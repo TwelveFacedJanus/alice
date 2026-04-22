@@ -1,4 +1,5 @@
 
+
 use std::ops::AddAssign;
 use chrono::{DateTime, Utc};
 use uuid::Uuid;
@@ -17,6 +18,10 @@ const WELCOME_MESSAGE: &str = "
 |                                               |
 |===============================================|
 ";
+
+
+
+type AliceResult<T, E> = std::io::Result<T, Box<dyn E>>;
 
 #[derive(Debug, Deserialize, Serialize)]
 pub enum Value {
@@ -365,6 +370,19 @@ pub struct User {
     pub role: UserRole,
 }
 
+impl User {
+    pub fn new(username: &str, password: &str) -> Self {
+        Self {
+            username: username.to_string(),
+            password: password.to_string(),
+        }
+    }
+
+    fn hash_password(&mut self) {
+        todo!();
+    }
+}
+
 #[derive(Debug, Deserialize, Serialize)]
 pub struct DatabaseManager {
     pub databases: Vec<Database>,
@@ -386,6 +404,7 @@ impl DatabaseManager {
 
         Self {databases, users}
     }
+    
 
     pub fn find_database(&mut self, name: &str) -> Option<&mut Database> {
         self.databases.iter_mut().find(|t| t.name == name)
