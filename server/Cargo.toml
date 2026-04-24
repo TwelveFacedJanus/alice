@@ -1,0 +1,11 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+core = { workspace = true }
+dotenv = { workspace = true } 
+env_logger = { workspace = true }
+futures = { workspace = true }
+tokio = { workspace = true }

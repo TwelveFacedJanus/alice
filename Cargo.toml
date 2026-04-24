@@ -1,32 +1,17 @@
 [workspace]
-resolver = "3"
 members = [
-    "."
-, "alice"]
+	"server",
+	"core"
+, "client", "inmem_engine", "asys"]
 
-[workspace.package]
-authors = ["Ermolaev Daniil Denisovich <twofaced-janus@yandex.ru>"]
-edition = "2024"
-license-file = "LICENSE"
-publish = false
-version = "0.0.1-alpha"
-description = "Simple database"
-homepage = "https://github.com/TwoFacedJanus/alice"
-keywords = [
-    "database"
-]
-categories = ["database"]
-repository = "https://github.com/TwoFacedJanus/alice.git"
+[workspace.dependencies]
+dotenv = "0.15.0"
+env_logger = "0.11.10"
+futures = "0.3.32"
+tokio = { version = "1.52.1", features = ["full"] }
+md-5 = "0.11.0"
+serde = { version = "1.0.228", features = ["derive"] }
+thiserror = "2.0.18"
+uuid = { version = "1.23.1", features = ["serde", "v4"] }
 
-[package]
-name = "alice"
-publish = false
-edition.workspace = true
-version.workspace = true
-authors.workspace = true
-description.workspace = true
-repository.workspace = true
-homepage.workspace = true
-keywords.workspace = true
-categories.workspace = true
-license-file.workspace = true
+core = { path = "core" }
